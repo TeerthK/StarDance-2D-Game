@@ -80,5 +80,50 @@ class Player:
         self.vy = 0
 
         #Physics Setup
+self.run_speed = 4.5
+        self.jump_impulse = -11.5
+        self.gravity = 0.55
+        self.terminal_velocity = 14.0
+
+        #states
+        self.on_ground = False
+        self.battery_charge = 100.0
+
+        def handle_input(self):
+            if self.battery_charge <= 0:
+                self.vx = 0
+                return
+
+            keys = pygame.key.get_pressed()
+            self.vx = 0
+
+            if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+                self.vx = -self.run_speed
+                self.battery_charge -= 0.04
+            if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+                    self.vx = self.run_speed
+                    self.battery_charge -= 0.04
+            if (keys[pygame.K_SPACE] or key[pygame.K.w] or keys[pygame.K_UP]) and self.on_ground:
+                        self.vy = self.jump_impulse
+                        self.on_ground = False
+                        self.battery_charge -= 2.5
+            def update(self, solid_block):
+                if self.battery_charge > 0:
+                      self.battery_charge -= 0.025
+                else:
+                      self.battery_charge = 0
+
+                      self.vy =+self.gravity
+                      if self.vy > self.terminal_velocity:
+                          self.vy = self.terminal_velocity
+
+                          self.rect.x += int(self.vx)
+                          self.resolve_collisions_on_axis(solid_block, 'x')
+
+                          self.rect.x += int(self.vy)
+                          self.on_ground = False
+                          self.resolve_collisions_on_axis(solid_block, 'y')
+                        
+        
         
         
