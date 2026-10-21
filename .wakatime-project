@@ -1,0 +1,84 @@
+import pygame
+import sys
+
+screen_width = 800
+screen_height = 600
+FPS = 60
+title_size = 50
+
+Color_BG = (22,22,28)
+Color_Wall = (65,73,84)
+Color_robot = (46,204,113)
+color_battery = (241,196,15)
+color_exit = (52,152,219)
+color_ui_bar = (231,76,60)
+#--- Map Grid Matrix ---
+# 0 = Air, 1 = Solid Metal, 2 = Fuel Pack (+35% charge), 3 = Elevator Exit
+Level_maps = [
+    #Level 1: The Training Floors
+    [
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    #level 2: The Chasm Leap
+    [, 
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] 
+    ],
+    #Level 3: The Vertical Shaft
+        [,
+     ,
+     ,
+     ,
+     ,
+     ,
+     ,
+     ,
+     ,
+     ,
+     ,
+       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ],
+        #Level 4: The core Gaunlet
+        [,
+         ,
+         ,
+         ,
+         ,
+         ,
+         ,
+         ,
+         ,
+         ,
+         ,
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ] 
+]
+
+class Player:
+    def __init__(self, tx, ty):
+        self.rect = pygame,rect(tx * TITLE_SIZE + 10, ty * TITLE_SIZE, 30, 45)
+        self.vx = 0
+        self.vy = 0
+
+        #Physics Setup
+        
+        
